@@ -1,17 +1,11 @@
 import fs from 'fs';
+import crypto from 'crypto';
 
-const stream = fs.createReadStream('./bigfile.bin',)
+const md5Stream = fs.createReadStream('./package.json')
+  .on('error', console.error)
+  .pipe(crypto.createHash('md5').setEncoding('hex'));
 
-stream.on('open', (fd) => {
-  console.log('### open', fd);
-})
-
-// - Buffer: no encoding passed
-// - string: encoding passed
-stream.on('data', (data: Buffer) => {
-  console.log('### data', data);
-})
-
-stream.on('end', () => {
-  console.log('### end')
+md5Stream.once('finish', () => {
+  const md5 = md5Stream.read()
+  console.log('### md5', md5)
 })

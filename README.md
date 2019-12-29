@@ -1,8 +1,7 @@
-TypeScript Node Fs Read Stream Demo
+TypeScript Node Stream Pipe to Md5 Demo
 ===================================
 
 ```
 npm install
-npm run generate-big-file
 npm run demo
 ```
